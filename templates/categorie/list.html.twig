@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des plats de la catégorie
+	{{ categorie.libelle }}
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<section class="row">
+			<div class="col-12 mt-3">
+				<h1>Liste des plats de la catégorie
+					{{ categorie.libelle }}</h1>
+			</div>
+			{% for plats in plat %}
+				<div class="col-4 mb-3">
+					<div class="card h-100">
+						<img class="card-img-top" src="{{ plats.image }}" alt="Card image cap">
+						<div class="card-body">
+							<h3 class="card-title">{{ plats.libelle }}</h3>
+							<p class="card-text">{{ plats.description }}</p>
+							<a href="" class="btn btn-primary">Voir les détails</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</section>
+	</main>
+
+{% endblock %}

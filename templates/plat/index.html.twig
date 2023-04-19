@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des plats
+{% endblock %}
+
+{% block body %}
+<div class="container">
+		<img class="img-fluid rounded mx-auto d-block" src="/assets/uploads/bcg1.png" alt="responsive_bg1" width="33%">
+
+		<form class="d-flex">
+			<input class="btn-outline-primary form-control me-sm-2" type="search" placeholder="Search">
+			<button class="btn btn-outline-primary btn-secondary my-2 my-sm-0" type="submit">Search</button>
+		</form>
+	</div>
+
+	<main class="container">
+		<section class="row">
+			<div class="col-12">
+				<h1 class="mt-3">TheDistrict</h1>
+				<p>Bienvenue dans notre restaurant</p>
+			</div>
+			{% for plats in plat %}
+		<div class="col-4 mb-3">
+			<div class="card h-100">
+				<img class="card-img-top" src="{{ plats.image }}" alt="Card image cap">
+				<div class="card-body">
+					<h3 class="card-title">{{ plats.libelle }}</h3>
+					<p class="card-text">{{ plats.description }}</p>
+					<a href="" class="btn btn-primary">Voir le plat en détail</a>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+
+		</section>
+	</main>
+	
+
+{% endblock %}
