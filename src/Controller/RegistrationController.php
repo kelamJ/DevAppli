@@ -148,7 +148,7 @@ class RegistrationController extends AbstractController
                 'register',
                 compact('user', 'token')
             );
-            $this->addFlash('success', 'E-mail de vérification envoyer');
+            $this->addFlash('success', 'Cet utilisateur est déjà activé');
             return $this->redirectToRoute('profil_index');
     }
 }

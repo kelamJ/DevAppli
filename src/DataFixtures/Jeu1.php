@@ -138,7 +138,6 @@ class Jeu1 extends Fixture
         $commande2->setUtilisateur($user2);
         $commande3->setUtilisateur($user1);
 
-
         $manager->flush();
     }
 }
