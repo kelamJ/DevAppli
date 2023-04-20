@@ -100,6 +100,7 @@ class PictureService
             }
 
             $original = $path . '/' . $fichier;
+
             if(file_exists($original)){
                 unlink($mini);
                 $success = true;

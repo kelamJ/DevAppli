@@ -93,7 +93,9 @@ class Jeu1 extends Fixture
             ->setPassword(password_hash("password",PASSWORD_DEFAULT))
             ->setNom("Malek")
             ->setPrenom("Julien")
-            ->setTelephone("0762198800");
+            ->setTelephone("0762198800")
+            ->setIsVerified('0')
+            ->setRoles(['ROLE_ADMIN']);
 
         $user2 = new User();
 
@@ -101,7 +103,9 @@ class Jeu1 extends Fixture
             ->setPassword(password_hash("password",PASSWORD_DEFAULT))
             ->setNom("Diouf")
             ->setPrenom("Geoffrey")
-            ->setTelephone("0765987125");
+            ->setTelephone("0765987125")
+            ->setIsVerified('0');
+            
 
             $manager->persist($user1);
             $manager->persist($user2);
