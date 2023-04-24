@@ -104,7 +104,8 @@ class Jeu1 extends Fixture
             ->setNom("Diouf")
             ->setPrenom("Geoffrey")
             ->setTelephone("0765987125")
-            ->setIsVerified('0');
+            ->setIsVerified('0')
+            ->setRoles(['ROLE_PRODUCT_ADMIN']);
             
 
             $manager->persist($user1);
