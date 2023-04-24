@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration des plats{% endblock %}
+
+{% block body %}
+
+    <main class="container my-3">
+        <section class="row">
+            <div class="col-12">
+                <h1>Modifier un plat</h1>
+                {% include "admin/plats/_form.html.twig" with {'button_label': 'Modifier'}  %}
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

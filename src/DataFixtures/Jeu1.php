@@ -115,19 +115,19 @@ class Jeu1 extends Fixture
 
         $commande1->setDateCommande(new \DateTime())
                 ->setTotal("16.00")
-                ->setEtat("1");
+                ->setEtat("3");
 
         $commande2 = new Commande();
 
         $commande2->setDateCommande(new \DateTime())
                 ->setTotal("8.00")
-                ->setEtat("1");
+                ->setEtat("3");
 
         $commande3 = new Commande();
 
         $commande3->setDateCommande(new \DateTime())
                 ->setTotal("20.00")
-                ->setEtat("1");
+                ->setEtat("3");
 
             $manager->persist($commande1);
             $manager->persist($commande2);
