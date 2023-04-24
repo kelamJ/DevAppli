@@ -24,7 +24,7 @@ class CategorieController extends AbstractController
     public function details(Categorie $categorie): Response
     {
         //On va chercher la liste des plats de la catégorie
-        $plat = $categorie->getPlats();
+        $plat = $categorie->getPlat();
 
         return $this->render('categorie/list.html.twig', compact(
         'categorie',

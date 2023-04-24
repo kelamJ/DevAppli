@@ -18,7 +18,7 @@
 						<div class="card-body">
 							<h3 class="card-title">{{ plats.libelle }}</h3>
 							<p class="card-text">{{ plats.description }}</p>
-							<a href="" class="btn btn-primary">Voir les détails</a>
+							<a href="{{ path('plat_details', {id: plats.id})}}" class="btn btn-primary">Voir les détails</a>
 						</div>
 					</div>
 				</div>

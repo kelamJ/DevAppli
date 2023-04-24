@@ -2,13 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\Categorie;
 use App\Entity\Plat;
+use App\Entity\Categorie;
 use App\Repository\CategorieRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PlatsFormType extends AbstractType
 {
@@ -24,8 +25,11 @@ class PlatsFormType extends AbstractType
             ->add('prix', options:[
                 'label' => 'Prix'
             ])
-            ->add('image', options:[
-                'label' => 'Image'
+            ->add('image',FileType::class, [
+                'label' => false,
+                'multiple' => true,
+                'mapped' => false,
+                'required' =>false
             ])
             ->add('active', options:[
                 'label' => 'Disponibilité'

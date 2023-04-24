@@ -4,11 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\Plat;
 use App\Form\PlatsFormType;
+use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 
 #[Route('/admin/plats', name: 'admin_plats_')]
 class PlatsController extends AbstractController
@@ -22,7 +23,8 @@ class PlatsController extends AbstractController
     #[Route('/ajout', name: 'add')]
     public function add(
         Request $request,
-        EntityManagerInterface $em
+        EntityManagerInterface $em,
+        PictureService $pictureService
     ): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
@@ -38,6 +40,19 @@ class PlatsController extends AbstractController
 
         // On vérifie si le formulaire est soumis et valide
         if($platForm->isSubmitted() && $platForm->isValid()){
+            // On récupère les images
+            $images = $platForm->get('image')->getData();
+
+            foreach($images as $image){
+                // On définit le dossier de destination
+                $folder = 'plats';
+
+                // On apelle le service d'ajout
+                $fichier = $pictureService->add($image, $folder, 300, 300);
+                
+                // $img = new Image();
+                // $img->setName($fichier);
+            }
             // On arrondit le prix
             // $prix = $plat->getPrix() * 100;
             // $plat->setPrix($prix);
