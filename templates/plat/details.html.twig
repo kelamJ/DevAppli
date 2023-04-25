@@ -5,18 +5,23 @@
 {% endblock %}
 
 {% block body %}
-<div class="container my-3">
-	<div class="card mb-3" style="max-width: 900px;">
-		<img src="{{ asset('assets/uploads/plats/') ~ plat.image }}" class="card-img-top" alt="">
-		<div class="card-body">
-			<h5 class="card-title">{{ plat.libelle }}</h5>
-			<p class="card-text">{{ plat.description }}</p>
-			<p class="card-text">
-				<small class="text-body-secondary">Catégorie :{{ plat.categorie.libelle }}</small>
-			</p>
-            <p>
-            Prix : {{ plat.prix }}€
-            </p>
+<div class="container my-3 d-flex justify-content-center">
+	<div class="card mb-3 " style="max-width: 540px;">
+		<div class="row g-0">
+			<div class="col-md-13">
+				<img src="{{ asset('assets/uploads/plats/') ~ plat.image }}" class="img-fluid rounded-start" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title">{{ plat.libelle }}</h5>
+					<p class="card-text">{{ plat.description }}</p>
+					<p class="card-text">
+						<small class="text-body-secondary">Catégorie : {{ plat.categorie.libelle }}</small></p>
+                    <p>
+					Prix : {{ plat.prix }}€
+				</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
