@@ -1,0 +1,6 @@
+{{ form_start(catForm)}}
+    {{ form_row(catForm.libelle)}}
+    {{ form_row(catForm.image)}}
+    {{ form_row(catForm.active)}}
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(catForm)}}
