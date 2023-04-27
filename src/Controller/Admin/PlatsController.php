@@ -50,8 +50,7 @@ class PlatsController extends AbstractController
                 // On apelle le service d'ajout
                 $fichier = $pictureService->add($image, $folder, 300, 300);
                 
-                // $img = new Image();
-                // $img->setName($fichier);
+                $plat->setImage($fichier); 
             }
             // On arrondit le prix
             // $prix = $plat->getPrix() * 100;

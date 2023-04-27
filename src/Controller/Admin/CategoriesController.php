@@ -51,7 +51,7 @@ class CategoriesController extends AbstractController
                 $fichier = $pictureService->add($image, $folder, 300, 300);
                 
                 // $img = new Image();
-                // $img->setName($fichier);
+                $cat->setImage($fichier);
             }
             // On arrondit le prix
             // $prix = $plat->getPrix() * 100;
