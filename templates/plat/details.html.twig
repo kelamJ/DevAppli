@@ -3,30 +3,21 @@
 {% block title %}Détails de
 	{{ plat.libelle }}
 {% endblock %}
-
 {% block body %}
-<div class="container my-3 d-flex justify-content-center">
-	<div class="card mb-3 " style="max-width: 540px;">
-		<div class="row g-0">
-			{% for plats in plat %}
-			
-			<div class="col-md-13">
-				<img src="{{ asset('assets/uploads/plats/') ~ plats.image }}" class="img-fluid rounded-start">
-			</div>
-			<div class="col-md-8">
-				<div class="card-body">
-					<h5 class="card-title">{{ plats.libelle }}</h5>
-					<p class="card-text">{{ plats.description }}</p>
-					<p class="card-text">
-						<small class="text-body-secondary">Catégorie : {{ plats.categorie.libelle }}</small></p>
-                    <p>
-					Prix : {{ plats.prix }}€
+	<div class="container my-3 d-flex justify-content-center">
+		<div class="card mb-3" style="max-width: 500px;">
+			<img class="card-img-top" src="{{ asset('assets/uploads/plats/') ~ plat.image }}" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">{{ plat.libelle }}</h5>
+				<p class="card-text">{{ plat.description }}</p>
+				<p class="card-text">
+					<small class="card-text">Prix :
+						{{ plat.prix }}€</small>
 				</p>
-				</div>
 			</div>
 		</div>
-				
-			{% endfor %}
 	</div>
-</div>
+	<div class="container my-3 d-flex justify-content-center">
+		<a class="btn btn-primary" href="/plat/">Retour</a>
+	</div>
 {% endblock %}
