@@ -52,9 +52,6 @@ class PlatsController extends AbstractController
                 
                 $plat->setImage($fichier); 
             }
-            // On arrondit le prix
-            // $prix = $plat->getPrix() * 100;
-            // $plat->setPrix($prix);
 
             // On stocke
             $em->persist($plat);
@@ -91,9 +88,6 @@ class PlatsController extends AbstractController
 
          // On vérifie si le formulaire est soumis et valide
         if($platForm->isSubmitted() && $platForm->isValid()){
-             // On arrondit le prix
-             // $prix = $plat->getPrix() * 100;
-             // $plat->setPrix($prix);
 
              // On stocke
             $em->persist($plat);

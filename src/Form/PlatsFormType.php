@@ -7,9 +7,13 @@ use App\Entity\Categorie;
 use App\Repository\CategorieRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\All;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\Positive;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 class PlatsFormType extends AbstractType
 {
@@ -22,14 +26,28 @@ class PlatsFormType extends AbstractType
             ->add('description', options:[
                 'label' => 'Description'
             ])
-            ->add('prix', options:[
-                'label' => 'Prix'
+            ->add('prix', MoneyType::class, options:[
+                'label' => 'Prix',
+                'divisor' => 100,
+                'constraints' => [
+                    new Positive(
+                        message: 'Le prix ne peut être négatif'
+                    )
+                ]
             ])
             ->add('image',FileType::class, [
                 'label' => false,
                 'multiple' => true,
                 'mapped' => false,
-                'required' =>false
+                'required' =>false,
+                'constraints' => [
+                    new All(
+                        new Image([
+                            'maxWidth' => 1280,
+                            'maxWidthMessage' => 'L\'image doit faire {{ max_width }} pixels de large au maximum'
+                        ])
+                    )
+                ]
             ])
             ->add('active', options:[
                 'label' => 'Disponibilité'
