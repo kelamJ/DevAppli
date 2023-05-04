@@ -12,13 +12,18 @@
 					{{ categorie.libelle }}</h1>
 			</div>
 			{% for plats in plat %}
-				<div class="col-4 mb-3">
-					<div class="card h-100">
-						<img class="card-img-top" src="{{ plats.image }}" alt="Card image cap">
-						<div class="card-body">
-							<h3 class="card-title">{{ plats.libelle }}</h3>
-							<p class="card-text">{{ plats.description }}</p>
-							<a href="{{ path('plat_details', {id: plats.id})}}" class="btn btn-primary">Voir les détails</a>
+				<div class="col-4">
+					<div class="container my-3 d-flex justify-content-center">
+						<div class="card mb-3" style="max-width: 500px;">
+							<img class="card-img-top" src="{{ asset('assets/uploads/plats/') ~ plats.image }}" alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title">{{ plats.libelle }}</h5>
+								<p class="card-text">{{ plats.description }}</p>
+								<p class="card-text">
+									<small class="card-text">Prix :
+										{{ plats.prix }}€</small>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
