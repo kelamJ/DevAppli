@@ -1,32 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des catégories{% endblock %}
+{% block title %}Liste des catégories
+{% endblock %}
 
 {% block body %}
 
-<div class="container">
-        <div class="row">
-            {% include "partials/_adminnav.html.twig" %}
-            <main class="col-9 border border-light bg-white p-2">
-                <h1>Liste des catégories</h1>
-                <table class="table">
-                    <thead>
-                    <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for categorie in categories %}
-                        <tr>
-                            <td>{{ categorie.id }}</td>
-                            <td>{{ categorie.libelle }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </main>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			{% include "partials/_adminnav.html.twig" %}
+			<main class="col-9 border border-light bg-white p-2">
+				<h1>Liste des catégories</h1>
+				<table class="table">
+					<thead>
+						<tr class="bg-primary text-white">
+							<th>ID</th>
+							<th>Nom</th>
+							<th>Photo</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for categorie in categories %}
+							<tr>
+								<td>{{ categorie.id }}</td>
+								<td>{{ categorie.libelle }}</td>
+								<td><img class="img-thumbnail" style="max-width: 300px;" src="{{ asset('assets/uploads/categories/') ~ categorie.image }}" alt="{{ categorie.libelle }}"></td>
+								<td>
+									<a href="{{ path('admin_categories_edit', {id: categorie.id})}}" class="btn btn-sm btn-primary">Modifier</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</main>
+		</div>
+	</div>
 
 {% endblock %}

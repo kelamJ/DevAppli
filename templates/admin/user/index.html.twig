@@ -1,11 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Administration des utilisateurs{% endblock %}
+{% block title %}Liste des utilisateurs
+{% endblock %}
 
 {% block body %}
 
-<div class="container-fluid">
-    Administration des utilisateurs
-</div>
+	<div class="container">
+		<div class="row">
+			{% include "partials/_adminnav.html.twig" %}
+			<main class="col-9 border border-light bg-white p-2">
+				<h1>Liste des utilisateurs</h1>
+				<table class="table">
+					<thead>
+						<tr class="bg-primary text-white">
+							<th>ID</th>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>Email</th>
+							<th>Roles</th>
+							<th>Vérifier</th>
+							<th>Telephone</th>
+							<th></th>
+
+						</tr>
+					</thead>
+					<tbody>
+						{% for user in users %}
+							<tr>
+								<td>{{ user.id }}</td>
+								<td>{{ user.nom }}</td>
+								<td>{{ user.prenom }}</td>
+								<td>{{ user.email }}</td>
+								<td>
+									{% for role in user.roles %}
+										{% if role == "ROLE_ADMIN" %}
+											{% set name = "Administrateur" %}
+											{% set color = "danger" %}
+										{% elseif role == "ROLE_PRODUCT_ADMIN" %}
+											{% set name = "Admin plats" %}
+											{% set color = "warning" %}
+										{% else %}
+											{% set name = "Membre" %}
+											{% set color = "success" %}
+										{% endif %}
+										<span class="badge bg-{{ color }}">{{ name }}</span>
+									{% endfor %}
+								</td>
+								<td>
+									<div class="form-check form-switch">
+										<input class="form-check-input" type="checkbox" id="switch{{ user.id }}" {{ user.isVerified ? "checked" : "" }} disabled>
+										<label class="form-check-label" for="switch{{ user.id }}"></label>
+									</div>
+								</td>
+								<td>{{ user.telephone }}</td>
+								<td>
+									<a href="#" class="btn btn-success">Modifier</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</main>
+		</div>
+	</div>
 
 {% endblock %}
