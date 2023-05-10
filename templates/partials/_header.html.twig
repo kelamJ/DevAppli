@@ -19,19 +19,23 @@
 		</div>
 		<div class="navbar-nav d-flex flex-row-reverse">
 			{% if app.user %}
+				{% if is_granted('ROLE_PRODUCT_ADMIN') %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('admin_index') }}">Administration</a>
+				</li>
+				{% endif %}
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon compte</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="{{ path('app_logout') }}">Me déconnecter</a>
-						<a class="dropdown-item" href="#">Another action to do</a>
 					</div>
 				</li>
 			{% else %}
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon compte</a>
 					<div class="dropdown-menu">
-					<a class="dropdown-item" href="{{ path('app_login') }}">Me connecter</a>
-					<a class="dropdown-item" href="{{ path('app_register') }}">M'inscrire</a>
+						<a class="dropdown-item" href="{{ path('app_login') }}">Me connecter</a>
+						<a class="dropdown-item" href="{{ path('app_register') }}">M'inscrire</a>
 					</div>
 				</li>
 			{% endif %}

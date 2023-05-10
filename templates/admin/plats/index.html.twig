@@ -1,11 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Administration des plats{% endblock %}
+{% block title %}Liste des plats{% endblock %}
 
 {% block body %}
 
-<div class="container-fluid">
-    Administration des plats
-</div>
+<div class="container">
+        <div class="row">
+            {% include "partials/_adminnav.html.twig" %}
+            <main class="col-9 border border-light bg-white p-2">
+                <h1>Liste des plats</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for plat in plats %}
+                        <tr>
+                            <td>{{ plat.id }}</td>
+                            <td>{{ plat.libelle }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
 
 {% endblock %}
