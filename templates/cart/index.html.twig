@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!
+{% endblock %}
+
+{% block body %}
+	<main class="page-wrapper">
+		{% if cart|length > 0 %}
+			<div class="container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2">
+				<div class="row">
+					<div class="col-lg-12 offset-lg-1 pt-1">
+						<h2 class="pt-md-2 my-4 mt-lg-5">Mon panier</h2>
+						<p>Ajouter d'autres articles disponibles sur le site<a class="btn btn-primary" href="{{ path('plat_index') }}">Voir les articles</a>
+						</p>
+
+						{% for item in cart %}
+
+							<div class="d-sm-flex align-items-center border-top py-4">
+								<a href="#" class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-sm-2 p-xl-3 mb-2 mb-sm-0">
+									<img style="max-width: 300px;" src="{{ asset('assets/uploads/plats/')~ item.plat.image }}" alt=""></a>
+								<div class="w-100 pt-1 ps-sm-4">
+									<div class="d-flex">
+										<div class="me-3">
+											<h3 class="h5 mb-2">
+												<a href="">{{ item.plat.libelle }}</a>
+											</h3>
+											<p class="mb-2">{{ item.plat.description}}</p>
+										</div>
+										{# <div class="text-end ms-auto">
+											<div class="fs-5 mb-2">{{ (total / 100)|number_format(2, ',', '.')}}
+												€</div>
+										</div> #}
+									</div>
+									{# <div class="count-input ms-n3">
+										<a href="{{ path('cart_decrease', {id: plat.plat.id}) }}" class="btn btn-icon fs-xl" data-decrement>-</a>
+										<input type="number" class="form-control" value="{{ plat.quantity }}" readonly>
+										<a href="{{ path('cart_add', {id: plat.plat.id})}}" class="btn btn-icon fs-xl" data-increment>+</a>
+									</div>
+									#}
+                                    <div class="nav justify-content-end mt-n5 mt-sm-n3">
+										<a style="font-size: 2rem;" href="{{ path('cart_remove', {id: item.plat.id}) }}" class="nav-link fs-xl p-2" data-bs-toggle="tooltip" title="Remove">
+											<ion-icon name="trash-outline"></ion-icon>
+										</a>
+									</div>
+								</div>
+							</div>
+
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+			{% else %}
+                <div class="container d-flex flex-column justify-content-center min-vh-100 py-5">
+                    <div class="text-center pt-4 mt-lg-2">
+                        <h1 class="display-5">Votre panier est vide</h1>
+                        <p class="fs-lg pb-2 pb-md-0 mb-4 mb-md-5">Commencez votre shopping dès maintenat à travers nos articles</p>
+                        <a href="{{ path('plat_index') }}" class="btn btn-lg btn-primary"> Voir les produits</a>
+                    </div>
+                </div>
+		{% endif %}
+
+	</main>
+{% endblock %}
