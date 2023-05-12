@@ -31,7 +31,7 @@
 											<div class="fs-5 mb-2">{{ (item.plat.prix)}}€</div>
 										</div>
 									</div>
-									<div class="count-input ms-n3">
+									<div class="count-input ms-n3 d-flex col-sm-3">
 										<a href="{{ path('cart_decrease', {id: item.plat.id}) }}" class="btn btn-icon fs-xl" data-decrement>-</a>
 										<input type="number" class="form-control" value="{{ item.quantity }}" readonly>
 										<a href="{{ path('cart_add', {id: item.plat.id}) }}" class="btn btn-icon fs-xl" data-increment>+</a>
