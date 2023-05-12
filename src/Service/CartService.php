@@ -23,11 +23,22 @@ class CartService {
 
     public function addToCart(int $id): void
     {
-        $cart = $this->requestStack->getSession()->get('cart', []);
+        $cart = $this->getSession()->get('cart', []);
         if(!empty($cart[$id])){
             $cart[$id]++;
         }else{
             $cart[$id] = 1;
+        }
+        $this->getSession()->set('cart', $cart);
+    }
+
+    public function decrease(int $id): void
+    {
+        $cart = $this->getSession()->get('cart', []);
+        if($cart[$id] > 1){
+            $cart[$id]--;
+        }else{
+            unset($cart[$id]);
         }
         $this->getSession()->set('cart', $cart);
     }
