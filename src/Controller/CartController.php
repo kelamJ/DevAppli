@@ -32,6 +32,16 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_index');
     }
 
+    #[Route('/panier/payer}', name: 'cart_buy')]
+    public function payer(
+        CartService $cartService,
+        Plat $plat 
+        ): Response
+    {
+        
+        return $this->redirectToRoute('cart_index');
+    }
+
     #[Route('/panier/decrease/{id<\d+>}', name: 'cart_decrease')]
     public function decrease(
         CartService $cartService,

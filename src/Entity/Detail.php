@@ -64,4 +64,5 @@ class Detail
 
         return $this;
     }
+
 }
