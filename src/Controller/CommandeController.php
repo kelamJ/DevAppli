@@ -2,19 +2,22 @@
 
 namespace App\Controller;
 
-use App\Service\CartService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CommandeController extends AbstractController
 {
-    #[Route('/commande', name: 'payer')]
-    public function index(CartService $cart): Response
+    #[Route('/commande/payer', name: 'com_index')]
+    public function index(): Response
     {
+        if(!$this->getUser()){
+            return $this->redirectToRoute('app_login');
+        }
+
         return $this->render('commande/index.html.twig', [
-            'controller_name' => 'CommandeController',
-            'cart'=>$cart
+            'controller_name' => 'CommandeController'
         ]);
     }
 }
