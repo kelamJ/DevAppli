@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-
+use App\Form\CommandeType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,8 +16,11 @@ class CommandeController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        $form = $this->createForm(CommandeType::class, null, [
+            'user' => $this->getUser()
+        ]);
         return $this->render('commande/index.html.twig', [
-            'controller_name' => 'CommandeController'
+            'form' => $form->createView()
         ]);
     }
 }

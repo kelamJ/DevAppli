@@ -1,0 +1,30 @@
+<h2 class="pb-2 pt-md-2 my-4 mt-lg-5">Récapitulatif de la commande<span class="fs-base fw-normal text-muted">({{ recapCart|length}}plats)</span>
+				</h2>
+				{% set total = null %}
+				{% for plat in recapCart %}
+					{% set total = total + (plat.plat.price * plat.quantity) %}
+					<div class="d-sm-flex align-items-center border-top py-4">
+						<a href="#" class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-sm-2 p-xl-3 mb-2 mb-sm-0"><img src="" width="80" height="80" alt="{{ plat.plat.title}}"></a>
+						<div class="w-100 pt-1 ps-sm-4">
+							<div class="d-block">
+								<div class="me-3">
+									<h3 class="h5 mb-2">
+										<a href="#">{{ plat.plat.title }}</a>
+									</h3>
+									<p>{{ plat.plat.subtitle}}</p>
+								</div>
+								<div>
+									<p class="mb-2">Quantité : x{{ plat.quantity }}
+										- Prix du produit:
+										{{ (plat.plat.price /100)|number_format(2,',', '.')}}</p>
+								</div>
+							</div>
+							<div class="nav justify-content-end mt-n4">
+								<a href="{{ path('cart_remove', {id: plat.plat.id}) }}" data-bs-toggle="tooltip" title="Remove" class="nav-link fs-xl p-2">
+									<ion-icon name="trash-outline"></ion-icon>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}

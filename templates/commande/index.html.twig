@@ -1,20 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CommandeController!{% endblock %}
+{% block title %}Création de la commande
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/stagiaire/Bureau/Julien1/ProjetDevAppli/District/src/Controller/CommandeController.php'|file_link(0) }}">src/Controller/CommandeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/stagiaire/Bureau/Julien1/ProjetDevAppli/District/templates/commande/index.html.twig'|file_link(0) }}">templates/commande/index.html.twig</a></code></li>
-    </ul>
-</div>
+	<div class="d-none d-lg-block bg-secondary position-fixed top-0 start-0 h-100" style="width: 52.5%;"></div>
+	<div class="container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2">
+		<div class="row">
+			<div class="col-lg-6">
+				<nav class="breadcrumb">
+					<ol class="mt-5 pt-lg-3 pb-md-1 pb-lg-3 breadcrumb">
+						<li class="breadcrumb-item">
+							<a href="{{ path('main') }}">Accueil</a>
+						</li>
+						<li class="breadcrumb-item">
+							<a href="{{ path('cart_index') }}">Shop</a>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">Création de la commande</li>
+					</ol>
+				</nav>
+				{{ form_start(form) }}
+				<h1 class="h2 pb-2">Création de la commande</h1>
+				<h3 class="fs-base fw-normal text-body text-uppercase pb-1 pb-sm-1">1.
+					<span class="text-decoration-underline ms-1"></span>
+				</h3>
+				<p>Si vous n'avez pas d'adresse ajouter en une dans votre espace compte
+					<a href="#">Ajouter une adresse</a>
+				</p>
+				<h3 class="fs-base fw-normal text-body text-uppercase pb-2 pb-sm-3">2.<span class="text-decoration-underline ms-1">Choisir votre livraison</span>
+				</h3>
+				{{ form_row(form.addresses) }}
+				<h3 class="fs-base fw-normal text-body text-uppercase mt-n4 mt-md-n3 pt-5 pb-2 pb-sm-3">3.<span class="text-decoration-underline ms-1">Mode de livraison</span>
+				</h3>
+			</div>
+			<div class="col-lg-5 offset-lg-1 pt-1">
+{# 				
+				<div class="d-flex align-items-center justify-content-between border-top fs-xl pt-4 mb-4">
+					Total:
+					<span class="fs-3 fw-semibold text-dark ms-2">{{ (plat.plat.price /100)|number_format(2,',', '.') }}
+						€</span>
+				</div>
+				<div class="mt-5 text-center">
+					<button class="btn btn-lg btn-primary" type="submit" style="border-radius: 6px; position: relative; top: 20px">Valider votre commande</button>
+				</div> #}
+			</div>
+		</div>
+		{{ form_end(form) }}
+	</div>
 {% endblock %}

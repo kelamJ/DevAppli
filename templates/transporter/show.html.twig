@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Transporter{% endblock %}
+
+{% block body %}
+    <h1>Transporter</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ transporter.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ transporter.title }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ transporter.content }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ transporter.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_trans_index') }}">back to list</a>
+
+    <a href="{{ path('admin_trans_edit', {'id': transporter.id}) }}">edit</a>
+
+    {{ include('transporter/_delete_form.html.twig') }}
+{% endblock %}
