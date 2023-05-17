@@ -14,7 +14,7 @@ class Adress
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'adresses')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
 
     #[ORM\Column(length: 255)]
@@ -43,6 +43,14 @@ class Adress
 
     #[ORM\Column(length: 255)]
     private ?string $city = null;
+
+    public function __toString(): string 
+    {
+        return $this->title . '[-br]' .
+                $this->adress . '[-br]' .
+                $this->city . ' - ' .
+                $this->country;
+    }
 
     public function getId(): ?int
     {

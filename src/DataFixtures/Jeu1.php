@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Adress;
 use App\Entity\Plat;
 use App\Entity\Commande;
 use App\Entity\Categorie;
@@ -143,6 +144,30 @@ class Jeu1 extends Fixture
         $commande2->setUtilisateur($user2);
         $commande3->setUtilisateur($user1);
 
+        $adress1 = new Adress();
+
+        $adress1->setTitle("Ma maison")
+                ->setPrenom("Julien")
+                ->setNom("Malek")
+                ->setAdress("73 Avenue de la joie")
+                ->setPostalcode("80000")
+                ->setCountry("France")
+                ->setPhone("0762198700")
+                ->setCity("Amiens");
+
+        $adress2 = new Adress();
+
+                $adress2->setTitle("Le voisin")
+                ->setPrenom("Geoffrey")
+                ->setNom("Fleur")
+                ->setAdress("15 rue de la chatte")
+                ->setPostalcode("60000")
+                ->setCountry("France")
+                ->setPhone("0324329588")
+                ->setCity("Beauvais");
+        
+        $manager->persist($adress1);
+        $manager->persist($adress2);
         $manager->flush();
     }
 }
