@@ -24,6 +24,12 @@ class Detail
     #[ORM\JoinColumn(nullable: false)]
     private ?Commande $commande = null;
 
+    #[ORM\Column]
+    private ?float $prix = null;
+
+    #[ORM\Column]
+    private ?float $total = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +67,30 @@ class Detail
     public function setCommande(?Commande $commande): self
     {
         $this->commande = $commande;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(float $total): self
+    {
+        $this->total = $total;
 
         return $this;
     }

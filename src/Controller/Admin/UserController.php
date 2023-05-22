@@ -33,7 +33,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $adressRepository->save($adress, true);
 
-            return $this->redirectToRoute('admin_trans_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_user_gestion', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/adress/edit.html.twig', [
