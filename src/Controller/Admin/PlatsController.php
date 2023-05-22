@@ -20,7 +20,6 @@ class PlatsController extends AbstractController
     {
         $plats = $platRepository->findBy([], ['libelle' =>
         'asc']);
-
         return $this->render('admin/plats/index.html.twig', compact('plats'));
     }
 
@@ -32,45 +31,34 @@ class PlatsController extends AbstractController
     ): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
         // On crée un "nouveau plat"
         $plat = new Plat();
-
         // On crée le formulaire
         $platForm = $this->createForm(PlatsFormType::class, $plat);
-
         // On traite la requête du formulaire
         $platForm->handleRequest($request);
-
         // On vérifie si le formulaire est soumis et valide
         if($platForm->isSubmitted() && $platForm->isValid()){
             // On récupère les images
             $images = $platForm->get('image')->getData();
-
             foreach($images as $image){
                 // On définit le dossier de destination
                 $folder = 'plats';
-
                 // On apelle le service d'ajout
                 $fichier = $pictureService->add($image, $folder, 300, 300);
                 
                 $plat->setImage($fichier); 
             }
-
             // On stocke
             $em->persist($plat);
             $em->flush();
-
             $this->addFlash('success', 'Plat ajouté avec succès');
-
             //On redirige
             return $this->redirectToRoute('admin_plats_index');
         }
-
         return $this->render('admin/plats/add.html.twig', [
             'platForm' => $platForm->createView()
         ]);
-
         // return $this->renderForm('admin/plats/add.html.twig', compact('platForm'));
     }
 
@@ -83,26 +71,19 @@ class PlatsController extends AbstractController
     {
         // On vérifie si l'utilisateur peut éditer avec le voter 
         $this->denyAccessUnlessGranted('PLAT_EDIT', $plat);
-
          // On crée le formulaire
         $platForm = $this->createForm(PlatsFormType::class, $plat);
-
          // On traite la requête du formulaire
         $platForm->handleRequest($request);
-
          // On vérifie si le formulaire est soumis et valide
         if($platForm->isSubmitted() && $platForm->isValid()){
-
              // On stocke
             $em->persist($plat);
             $em->flush();
-
             $this->addFlash('success', 'Plat modifié avec succès');
-
              //On redirige
             return $this->redirectToRoute('admin_plats_index');
         }
-
         return $this->render('admin/plats/edit.html.twig', [
             'platForm' => $platForm->createView()
         ]);
@@ -113,7 +94,6 @@ class PlatsController extends AbstractController
     {
         // On vérifie si l'utilisateur peut supprimer avec le voter
         $this->denyAccessUnlessGranted('PLAT_DELETE', $plat);
-
         return $this->render('admin/plats/index.html.twig');
     }
 }
