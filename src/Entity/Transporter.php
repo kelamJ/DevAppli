@@ -23,6 +23,13 @@ class Transporter
     #[ORM\Column]
     private ?float $price = null;
 
+    public function __toString(): string
+    {
+        return $this->title . '[-br]' .
+        $this->content . '[-br]' .
+        number_format(($this->price /100), decimals:2, decimal_separator:',', thousands_separator:',') . '€';
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
