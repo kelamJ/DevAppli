@@ -19,11 +19,11 @@ class Commande
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_commande = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
-    private ?string $total = null;
-
     #[ORM\Column]
-    private ?int $etat = null;
+    private ?string $total = "";
+
+    #[ORM\Column(type: 'boolean')]
+    private $etat = false;
 
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Detail::class)]
     private Collection $details;
@@ -90,12 +90,12 @@ class Commande
         return $this;
     }
 
-    public function getEtat(): ?int
+    public function getEtat(): ?bool
     {
         return $this->etat;
     }
 
-    public function setEtat(int $etat): self
+    public function setEtat(bool $etat): self
     {
         $this->etat = $etat;
 

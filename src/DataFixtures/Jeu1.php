@@ -3,9 +3,11 @@
 namespace App\DataFixtures;
 
 use App\Entity\Adress;
+use App\Entity\Detail;
 use App\Entity\Plat;
 use App\Entity\Commande;
 use App\Entity\Categorie;
+use App\Entity\Transporter;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -115,24 +117,17 @@ class Jeu1 extends Fixture
         $commande1 = new Commande();
 
         $commande1->setDateCommande(new \DateTime())
-                ->setTotal("16.00")
-                ->setEtat("3");
-
-        $commande2 = new Commande();
-
-        $commande2->setDateCommande(new \DateTime())
-                ->setTotal("8.00")
-                ->setEtat("3");
-
-        $commande3 = new Commande();
-
-        $commande3->setDateCommande(new \DateTime())
-                ->setTotal("20.00")
-                ->setEtat("3");
-
+                ->setTotal("2")
+                ->setEtat("1")
+                ->setTransporterName("Abeille Rush")
+                ->setTransporterPrice(5)
+                ->setDelivery("1")
+                ->setIsPaid(0)
+                ->setMethod("Avion")
+                ->setReference("F45E66");
+                
             $manager->persist($commande1);
-            $manager->persist($commande2);
-            $manager->persist($commande3);
+            
 
         $plat1->setCategorie($categorie1);
         $plat2->setCategorie($categorie2);
@@ -141,8 +136,6 @@ class Jeu1 extends Fixture
         $plat5->setCategorie($categorie2);
 
         $commande1->setUtilisateur($user1);
-        $commande2->setUtilisateur($user2);
-        $commande3->setUtilisateur($user1);
 
         $adress1 = new Adress();
 
@@ -166,8 +159,34 @@ class Jeu1 extends Fixture
                 ->setPhone("0324329588")
                 ->setCity("Beauvais");
         
+        $trans1 = new Transporter();
+
+                $trans1->setTitle("Abeille Rush")
+                ->setContent("Livraison rapide comme une abeille")
+                ->setPrice(5);
+
+        $trans2 = new Transporter();
+
+                $trans2->setTitle("Colissimo")
+                ->setContent("Livraison sous 2 à 3 jours")
+                ->setPrice(6);
+
+        $detail1 = new Detail();
+
+                $detail1->setQuantite(1)
+                ->setPrix(20)
+                ->setTotal(2);
+
+        $detail1->setPlat($plat1);
+        $detail1->setCommande($commande1);
+
+
         $manager->persist($adress1);
         $manager->persist($adress2);
+        $manager->persist($trans1);
+        $manager->persist($trans2);
+        $manager->persist($detail1);
+
         $manager->flush();
     }
 }

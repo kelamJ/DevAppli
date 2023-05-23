@@ -28,7 +28,7 @@ class Detail
     private ?float $prix = null;
 
     #[ORM\Column]
-    private ?float $total = null;
+    private ?string $total = "";
 
     public function getId(): ?int
     {
@@ -83,12 +83,12 @@ class Detail
         return $this;
     }
 
-    public function getTotal(): ?float
+    public function getTotal(): ?string
     {
         return $this->total;
     }
 
-    public function setTotal(float $total): self
+    public function setTotal(string $total): self
     {
         $this->total = $total;
 

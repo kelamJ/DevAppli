@@ -63,7 +63,7 @@ class CartService {
                 $plat = $this->em->getRepository(Plat::class)->findOneBy(['id' => $id]);
                 if(!$plat){
                     $this->removeToCart($id);
-                    continue
+                    continue;
                 }
                 $cartData[] = [
                     'plat' => $plat,

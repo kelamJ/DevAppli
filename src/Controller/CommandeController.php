@@ -39,6 +39,9 @@ class CommandeController extends AbstractController
     #[Route('/commande/verifier', name: 'com_verif')]
     public function verifCom(CartService $cartService, Request $request): Response
     {
+        if(!$this->getUser()){
+            return $this->redirectToRoute('app_login');
+        }
         $form = $this->createForm(CommandeType::class, null,[
             'user' => $this->getUser()
         ]);
@@ -69,19 +72,27 @@ class CommandeController extends AbstractController
             $commande->setMethod('stripe');
 
             $this->em->persist($commande);
-
             
-
+            
             foreach ($cartService->getTotal() as $plat)
             {
                 $details = new Detail();
                 $details->setCommande($commande);
-                $details->setQuantite();
-
+                $details->setQuantite($plat['quantity']);
+                $details->setPrix($plat['plat']->getPrix());
+                $details->setPlat($plat['plat']);
+                $details->setTotal($plat['plat']->getPrix() * $plat['quantity']
+            
+            
+            
+            
+            );
+                $this->em->persist($details);
             }
             
+            $this->em->flush();
+            dd($commande);
         }
         return $this->render('commande/recap.html.twig');
     }
-
 }
