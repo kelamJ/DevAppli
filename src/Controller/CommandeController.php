@@ -79,13 +79,9 @@ class CommandeController extends AbstractController
                 $details = new Detail();
                 $details->setCommande($commande);
                 $details->setQuantite($plat['quantity']);
-                $details->setPrix($plat['plat']->getPrix());
-                $details->setPlat($plat['plat']);
+                $details->setPrix($plat)->getPrix();
+                $details->setPlat($plat)->getLibelle();
                 $details->setTotal($plat['plat']->getPrix() * $plat['quantity']
-            
-            
-            
-            
             );
                 $this->em->persist($details);
             }
