@@ -23,7 +23,7 @@ class Plat
         min: 5,
         max: 50,
         minMessage: ' Le nom doit faire au moins {{ limit }} caractères',
-        maxMessage: ' Le nom ne doit pas faire plus de { limit }} caractères'
+        maxMessage: ' Le nom ne doit pas faire plus de {{ limit }} caractères'
         )]
     private ?string $libelle = null;
 

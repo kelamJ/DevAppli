@@ -13,11 +13,14 @@ class Detail
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $libelle = null;
+
     #[ORM\Column]
     private ?int $quantite = null;
 
     #[ORM\ManyToOne(inversedBy: 'detail')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Plat $plat = null;
 
     #[ORM\ManyToOne(inversedBy: 'details')]
@@ -35,6 +38,17 @@ class Detail
         return $this->id;
     }
 
+    public function getLibelle(): ?string
+    {
+        return $this->libelle;
+    }
+
+    public function setLibelle(string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
     public function getQuantite(): ?int
     {
         return $this->quantite;

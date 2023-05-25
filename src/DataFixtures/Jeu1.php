@@ -117,13 +117,13 @@ class Jeu1 extends Fixture
         $commande1 = new Commande();
 
         $commande1->setDateCommande(new \DateTime())
-                ->setTotal("2")
+                ->setTotal("8")
                 ->setEtat("1")
                 ->setTransporterName("Abeille Rush")
                 ->setTransporterPrice(5)
-                ->setDelivery("1")
+                ->setDelivery("Julien Malek</br>0762198700</br>73 Avenue de la joie</br>80000 - Amiens</br>France")
                 ->setIsPaid(0)
-                ->setMethod("Avion")
+                ->setMethod("stripe")
                 ->setReference("F45E66");
                 
             $manager->persist($commande1);
@@ -140,6 +140,7 @@ class Jeu1 extends Fixture
         $adress1 = new Adress();
 
         $adress1->setTitle("Ma maison")
+                ->setUser($user1)
                 ->setPrenom("Julien")
                 ->setNom("Malek")
                 ->setAdress("73 Avenue de la joie")
@@ -151,6 +152,7 @@ class Jeu1 extends Fixture
         $adress2 = new Adress();
 
                 $adress2->setTitle("Le voisin")
+                ->setUser($user1)
                 ->setPrenom("Geoffrey")
                 ->setNom("Fleur")
                 ->setAdress("15 rue de la chatte")
@@ -174,8 +176,9 @@ class Jeu1 extends Fixture
         $detail1 = new Detail();
 
                 $detail1->setQuantite(1)
-                ->setPrix(20)
-                ->setTotal(2);
+                ->setPrix(8)
+                ->setTotal(1)
+                ->setLibelle("District Burger");
 
         $detail1->setPlat($plat1);
         $detail1->setCommande($commande1);

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Plat;
 use App\Entity\Detail;
 use App\Entity\Commande;
 use App\Form\CommandeType;
@@ -73,21 +74,23 @@ class CommandeController extends AbstractController
 
             $this->em->persist($commande);
             
+
             
             foreach ($cartService->getTotal() as $plat)
             {
                 $details = new Detail();
                 $details->setCommande($commande);
                 $details->setQuantite($plat['quantity']);
-                $details->setPrix($plat)->getPrix();
-                $details->setPlat($plat)->getLibelle();
-                $details->setTotal($plat['plat']->getPrix() * $plat['quantity']
-            );
+                $details->setPrix($plat['plat']->getPrix());
+                $details->setTotal($plat['quantity']);
+                $details->setLibelle($plat['plat']->getLibelle());
+                $commande->setTotal($details->getPrix() * $plat['quantity']);
                 $this->em->persist($details);
             }
+            $commande->setTotal($details->getQuantite() * $details->getPrix());
             
+            $this->em->persist($details);
             $this->em->flush();
-            dd($commande);
         }
         return $this->render('commande/recap.html.twig');
     }
