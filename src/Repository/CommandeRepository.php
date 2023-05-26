@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Commande;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+// use phpDocumentor\Reflection\DocBlock\Description;
+// use phpDocumentor\Reflection\DocBlock\Description;
 
 /**
  * @extends ServiceEntityRepository<Commande>
@@ -39,6 +41,14 @@ class CommandeRepository extends ServiceEntityRepository
         }
     }
 
+    // public function countTotal(): array
+    // {
+    //     SELECT SUM(prix) as total_prix FROM detail
+    //     JOIN commande ON commande.id = detail.commande_id
+    //     GROUP BY detail.commande_id
+    //     ORDER BY total_prix DESC
+    //     LIMIT 1;
+    // }
 //    /**
 //     * @return Commande[] Returns an array of Commande objects
 //     */

@@ -27,7 +27,7 @@ class Transporter
     {
         return $this->title . '[-br]' .
         $this->content . '[-br]' .
-        number_format(($this->price /100), decimals:2, decimal_separator:',', thousands_separator:',') . '€';
+        number_format(($this->price), decimals:2, decimal_separator:',', thousands_separator:',') . '€';
     }
     
     public function getId(): ?int
