@@ -41,14 +41,53 @@ class CommandeRepository extends ServiceEntityRepository
         }
     }
 
+    // public function counTotal():  array
+    // {
+    //     return $this->createQueryBuilder('d')
+    //         ->where('d.prix LIKE :prix')
+    //         ->setParameter()
+    //         ->orderBy('d.commande', 'ASC')
+    //         ->getQuery()
+    //         ->getResult()
+    // }
+
+    // public function countTotal() : array
+    // {
+    //     $cart = $this->getSession()->get('cart');
+    //     $cartData = [];
+    //     if($cart){
+    //         foreach($cart as $id => $quantity){
+    //             $plat = $this->em->getRepository(Plat::class)->findOneBy(['id' => $id]);
+    //             if(!$plat){
+    //                 $this->removeToCart($id);
+    //                 continue;
+    //             }
+    //             $cartData[] = [
+    //                 'plat' => $plat,
+    //                 'quantity' => $quantity
+    //             ];
+    //         }
+    //     }
+    //     return $cartData;
+    //     {% set total = null %}
+    //                             {% for item in cart %}
+    //                                 {% set total = total + (item.plat.prix * item.quantity) %}
+    
+    //                             {% endfor %}
+    //                             <div> Total: <span >{{total}} €</span> </div>
+    // }
+
     // public function countTotal(): array
     // {
-    //     SELECT SUM(prix) as total_prix FROM detail
-    //     JOIN commande ON commande.id = detail.commande_id
-    //     GROUP BY detail.commande_id
-    //     ORDER BY total_prix DESC
-    //     LIMIT 1;
+        // SELECT SUM(prix) as total_prix FROM detail
+        // JOIN commande ON commande.id = detail.commande_id
+        // GROUP BY detail.commande_id
+        // ORDER BY total_prix ASC
+        // LIMIT 1;
     // }
+
+
+    
 //    /**
 //     * @return Commande[] Returns an array of Commande objects
 //     */
