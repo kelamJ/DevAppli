@@ -20,6 +20,12 @@ class ContactController extends AbstractController
         ): Response
     {
         $contact = new Contact();
+
+        if ($this->getUser()) {
+            $contact->setNom($this->getUser()->getNom())
+                    ->setPrenom($this->getUser()->getPrenom())
+                    ->setEmail($this->getUser()->getEmail());
+        }
         $form = $this->createForm(ContactType::class, $contact);
 
         $form->handleRequest($request);
@@ -36,7 +42,7 @@ class ContactController extends AbstractController
         }
 
         return $this->render('contact/index.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 }
