@@ -2,13 +2,14 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Plat;
+use App\Entity\User;
 use App\Entity\Adress;
 use App\Entity\Detail;
-use App\Entity\Plat;
+use App\Entity\Contact;
 use App\Entity\Commande;
 use App\Entity\Categorie;
 use App\Entity\Transporter;
-use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -182,6 +183,18 @@ class Jeu1 extends Fixture
 
         $detail1->setPlat($plat1);
         $detail1->setCommande($commande1);
+
+        // Contact
+        
+            $contact = new Contact();
+            $contact->setNom("Malek")
+                    ->setPrenom("Julien")
+                    ->setEmail("mlkjuju@mail.fr")
+                    ->setSujet('Demande n°1')
+                    ->setMessage("Bonjour j'adore les burgers et les pizza mais je préfère le cassoulet, pouvez vous en rajouter svp !");
+
+            $manager->persist($contact);
+        
 
 
         $manager->persist($adress1);

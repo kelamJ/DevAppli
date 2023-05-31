@@ -2,48 +2,72 @@
 
 namespace App\Controller;
 
-use App\Model\SearchData;
 use App\Repository\PlatRepository;
 use App\Repository\CategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[Route('/index', name: 'main_')]
 class MainController extends AbstractController
 {
-    #[Route('/', name: 'main')]
+    
+    #[Route('/', name: 'index')]
     public function index(
         CategorieRepository $categorieRepository,
-        PlatRepository $platRepository,
-        Request $request
+        PlatRepository $platRepository
     ): Response
     {
-        // $searchData = new SearchData();
-        // $form = $this->createForm(SearchType::class, $searchData);
-        
-        // $form->handleRequest($request);
-        // if($form->isSubmitted() && $form->isValid()) {
-        //     dd($searchData);
-        // }
+        $form = $this->createFormBuilder()
+        ->setAction($this->generateUrl(route:'main_handleSearch'))
+            ->add('query', TextType::class, [
+                'attr' => [
+                    'class' => 'w-100'
+                ],
+                'label' => 'Vous chercher quelque chose ?'
+            ])
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn-primary'
+                ],
+                'label' => 'Rechercher'
+            ])
+            ->getForm()
+            ;
 
         return $this->render('main/index.html.twig', [
-            // 'form' => $form->createView(),
+            'form' => $form->createView(),
             'categorie' => $categorieRepository->findBy([],
             ['id' => 'asc']),
             'plat' => $platRepository->findBy([],
             ['id' => 'asc'])
         ]);
+
+        
     }
 
-    // public function searchBar()
-    // {
-    //     $form = $this->createFormBuilder()
-    //         ->add('query', TextType::class)
+    #[Route('/handleSearch', name: 'handleSearch')]
+    public function handleSearch(
+    Request $request,
+    CategorieRepository $categorieRepository,
+    PlatRepository $platRepository)
+    {
+        $query = $request->request->all('form')['query'];
+        if ($query) {
+            $categories = $categorieRepository->findByExampleField($query);
+            $plats = $platRepository->findByExampleField($query);
+        }
 
-    // }
-    
+        dump($plats); die;
+
+        // return $this->render('search/result/', [
+        //     'categories' => $categories,
+        //     'plats' => $plats
+        // ]);
+    }
     // #[Route('/{id}', name: 'list')]
     // public function details(Plat $plat): Response
     // {

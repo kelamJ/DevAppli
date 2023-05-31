@@ -39,20 +39,33 @@ class PlatRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Plat[] Returns an array of Plat objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+    * @return Plat[] Returns an array of Plat objects
+    */
+    public function findByExampleField($query): array
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->where(
+            $qb->expr()->andX(
+                $qb->expr()->orX(
+                    $qb->expr()->like('p.libelle', ':query'),
+                    $qb->expr()->like('p.description', ':query')
+                ),
+                $qb->expr()->isNotNull('p.prix')
+            )
+        )
+        ->setParameter('query', '%' . $query . '%')
+        ;
+        return $qb
+                ->getQuery()
+                ->getResult();
+        // return $this->createQueryBuilder('p')
+        //     ->andWhere('p.libelle = :libelle')
+        //     ->setParameter('query', '%' . $query . '%')
+        //     ->getQuery()
+        //     ->getResult()
+        // ;
+    }
 
 //    public function findOneBySomeField($value): ?Plat
 //    {

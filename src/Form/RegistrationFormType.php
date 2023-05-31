@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -21,9 +24,16 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'minlenght' => '2',
+                    'maxlenght' => '180'
                 ],
-                'label' => 'E-mail'
+                'label' => 'E-mail',
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Email(),
+                    new Assert\Length(['min' => 2, 'max' => 180])
+                ]
             ])
             ->add('nom', TextType::class, [
                 'attr' => [

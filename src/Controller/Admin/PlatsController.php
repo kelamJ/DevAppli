@@ -69,19 +69,18 @@ class PlatsController extends AbstractController
     EntityManagerInterface $em
     ): Response
     {
-        // On vérifie si l'utilisateur peut éditer avec le voter 
         $this->denyAccessUnlessGranted('PLAT_EDIT', $plat);
-         // On crée le formulaire
+        
         $platForm = $this->createForm(PlatsFormType::class, $plat);
-         // On traite la requête du formulaire
+        
         $platForm->handleRequest($request);
-         // On vérifie si le formulaire est soumis et valide
+        
         if($platForm->isSubmitted() && $platForm->isValid()){
-             // On stocke
+            
             $em->persist($plat);
             $em->flush();
             $this->addFlash('success', 'Plat modifié avec succès');
-             //On redirige
+            
             return $this->redirectToRoute('admin_plats_index');
         }
         return $this->render('admin/plats/edit.html.twig', [
