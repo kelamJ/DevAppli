@@ -31,7 +31,7 @@ class MainController extends AbstractController
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn-primary'
+                    'class' => 'btn-secondary'
                 ],
                 'label' => 'Rechercher'
             ])
