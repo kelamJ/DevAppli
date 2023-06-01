@@ -2,5 +2,7 @@
     {{ form_row(catForm.libelle)}}
     {{ form_row(catForm.image)}}
     {{ form_row(catForm.active)}}
-    <button type="submit" class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
+    <button type="submit" class="btn btn-danger">{{ button_label|default('Ajouter') }}</button>
+    <a class="btn btn-danger" href="{{ path('admin_categories_index')}}"> Retour</a>
+
 {{ form_end(catForm)}}

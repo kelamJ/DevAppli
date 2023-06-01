@@ -8,8 +8,8 @@
 	<div class="container">
 		<div class="row">
 			{% include "partials/_adminnav.html.twig" %}
-			<main class="col-9 border border-light bg-white p-2">
-				<h1>Liste des utilisateurs</h1>
+			<main class="col-9 border border-light bg-primary p-2">
+				<h1 class="text-white">Liste des utilisateurs</h1>
 				<table class="table">
 					<thead>
 						<tr class="bg-primary text-white">
@@ -26,7 +26,7 @@
 					</thead>
 					<tbody>
 						{% for user in users %}
-							<tr>
+							<tr class="text-white">
 								<td>{{ user.id }}</td>
 								<td>{{ user.nom }}</td>
 								<td>{{ user.prenom }}</td>
@@ -54,7 +54,7 @@
 								</td>
 								<td>{{ user.telephone }}</td>
 								<td>
-									<a href="#" class="btn btn-success">Modifier</a>
+									<a href="#" class="btn-sm btn-danger">Modifier</a>
 								</td>
 							</tr>
 						{% endfor %}

@@ -1,9 +1,9 @@
-<nav class="navbar border-bottom border-secondary navbar-expand-lg navbar-dark bg-success">
-	<div class="container-fluid ">
-		<a class="navbar-brand " href="{{ path('main_index') }}">The District</a>
-		<div class="container" id="navbarColor01">
-			<ul class="navbar-nav d-flex justify-content-between mr-3">
-				<li class="nav-item ">
+<nav class="navbar border-bottom border-light navbar-expand-lg navbar-dark bg-success h5">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="{{ path('main_index') }}"><img src="uploads/LogoDistrict" alt=""></a>
+		<div class="mx-auto" id="navbarColor01">
+			<ul class="navbar-nav">
+				<li class="nav-item">
 					<a class="nav-link active" href="{{ path('main_index') }}">Accueil</a>
 				</li>
 				<li class="nav-item">
@@ -19,7 +19,6 @@
 					<a class="nav-link" href="{{ path('cart_index') }}"><ion-icon name="cart-outline"></ion-icon></a>
 				</li>
 			</ul>
-			
 		</div>
 		<div class="navbar-nav d-flex flex-row-reverse">
 			{% if app.user %}

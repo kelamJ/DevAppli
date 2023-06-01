@@ -13,19 +13,19 @@
 		</form>
 	</div> #}
 
-	<main class="container">
+	<main class="container text-white">
 		<section class="row">
 			<div class="col-12">
-				<h1 class="mt-3">Liste des catégories</h1>
+				<h1 class="mt-3 text-white">Liste des catégories</h1>
 			</div>
 			{% for category in categorie %}
 				<div class="col-lg-4 mb-3">
-					<div class="card h-100">
+					<div class="card h-100 bg-success">
 						<img class="card-img-top" src="{{ asset('assets/uploads/categories/') ~ category.image }}" alt="Card image cap">
 						<div class="card-body">
-							<h3 class="card-title">{{ category.libelle }}</h3>
+							<h3 class="card-title text-danger">{{ category.libelle }}</h3>
 							<p class="card-text">Disponible : {{ category.active }}</p>
-							<a href="{{ path('categorie_list', {id: category.id})}}" class="btn btn-primary">Voir la catégorie</a>
+							<a href="{{ path('categorie_list', {id: category.id})}}" class="btn btn-danger">Voir la catégorie</a>
 						</div>
 					</div>
 				</div>

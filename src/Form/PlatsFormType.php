@@ -21,13 +21,31 @@ class PlatsFormType extends AbstractType
     {
         $builder
             ->add('libelle', options:[
-                'label' => 'Nom'
+                'attr' => [
+                    'class' => ''
+                ],
+                'label' => 'Nom', 
+                'label_attr' => [
+                    'class' => 'text-white'
+                ]
             ])
             ->add('description', options:[
-                'label' => 'Description'
+                'attr' => [
+                    'class' => ''
+                ],
+                'label' => 'Description', 
+                'label_attr' => [
+                    'class' => 'text-white'
+                ]
             ])
             ->add('prix', MoneyType::class, options:[
+                'attr' => [
+                    'class' => ''
+                ],
                 'label' => 'Prix',
+                'label_attr' => [
+                    'class' => 'text-white'
+                ],
                 'divisor' => 100,
                 'constraints' => [
                     new Positive(
@@ -36,6 +54,9 @@ class PlatsFormType extends AbstractType
                 ]
             ])
             ->add('image',FileType::class, [
+                'attr' => [
+                    'class' => ''
+                ],
                 'label' => false,
                 'multiple' => true,
                 'mapped' => false,
@@ -50,12 +71,21 @@ class PlatsFormType extends AbstractType
                 ]
             ])
             ->add('active', options:[
-                'label' => 'Disponibilité'
+                'label' => 'Disponibilité', 
+                'label_attr' => [
+                    'class' => 'text-white'
+                ]
             ])
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
+                'attr' => [
+                    'class' => 'form-control'
+                ],
                 'choice_label' => 'libelle',
-                'label' => 'Catégorie',
+                'label' => 'Catégorie', 
+                'label_attr' => [
+                    'class' => 'text-white'
+                ],
                 'query_builder' => function(CategorieRepository $cr)
                 {
                     return $cr->createQueryBuilder('c')

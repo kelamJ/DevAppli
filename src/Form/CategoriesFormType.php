@@ -16,10 +16,22 @@ class CategoriesFormType extends AbstractType
     {
         $builder
             ->add('libelle', options:[
-                'label' => 'Nom'
+                'attr' => [
+                    'class' => ''
+                ],
+                'label' => 'Nom', 
+                'label_attr' => [
+                    'class' => 'text-white'
+                ]
             ])
             ->add('image',FileType::class, [
-                'label' => false,
+                'attr' => [
+                    'class' => ''
+                ],
+                'label' => 'Image',
+                'label_attr' => [
+                    'class' => 'text-white'
+                ],
                 'multiple' => true,
                 'mapped' => false,
                 'required' =>false,
@@ -33,7 +45,10 @@ class CategoriesFormType extends AbstractType
                 ]
             ])
             ->add('active', options:[
-                'label' => 'Disponibilité'
+                'label' => 'Disponibilité', 
+                'label_attr' => [
+                    'class' => 'text-white'
+                ],
             ])
         ;
     }

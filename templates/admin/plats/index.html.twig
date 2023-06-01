@@ -8,9 +8,9 @@
 	<div class="container">
 		<div class="row">
 			{% include "partials/_adminnav.html.twig" %}
-			<main class="col-9 border border-light bg-white p-2">
-				<h1>Liste des plats</h1>
-				<table class="table">
+			<main class="col-9 border border-light bg-primary p-2">
+				<h1 class="text-white ">Liste des plats</h1>
+				<table class="table table-primary">
 					<thead>
 						<tr class="bg-primary text-white">
 							<th>ID</th>
@@ -29,7 +29,7 @@
 								<td><img class="img-thumbnail" style="max-width: 300px;" src="{{ asset('assets/uploads/plats/') ~ plat.image }}" alt="{{ plat.libelle }}"></td>
 								<td>
                                 <a href="{{ path('admin_plats_edit',
-                                {id: plat.id})}}" class="btn btn-sm btn-primary">Modifier</a>
+                                {id: plat.id})}}" class="btn btn-sm btn-danger">Modifier</a>
                                 </td>
 							</tr>
 						{% endfor %}

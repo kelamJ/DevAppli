@@ -8,8 +8,8 @@
 	<div class="container">
 		<div class="row">
 			{% include "partials/_adminnav.html.twig" %}
-			<main class="col-9 border border-light bg-white p-2">
-				<h1>Gestion des utilisateurs</h1>
+			<main class="col-9 border border-light bg-primary p-2">
+				<h1 class="text-white">Gestion des utilisateurs</h1>
 				<table class="table">
 					<thead>
 						<tr class="bg-primary text-white">
@@ -17,7 +17,7 @@
 							<th>Titre</th>
 							<th>Prenom</th>
 							<th>Nom</th>
-							<th>Entreprise</th>
+							{# <th>Entreprise</th> #}
 							<th>Adresse</th>
 							<th>CP</th>
 							<th>Pays</th>
@@ -29,19 +29,19 @@
 					</thead>
 					<tbody>
 						{% for adress in adresses %}
-							<tr>
+							<tr class="text-white">
 								<td>{{ adress.id }}</td>
 								<td>{{ adress.title }}</td>
 								<td>{{ adress.prenom }}</td>
 								<td>{{ adress.nom }}</td>
-								<td>{{ adress.company }}</td>
+								{# <td>{{ adress.company }}</td> #}
 								<td>{{ adress.adress }}</td>
 								<td>{{ adress.postalcode }}</td>
 								<td>{{ adress.country }}</td>
 								<td>{{ adress.phone }}</td>
 								<td>{{ adress.city }}</td>
 								<td>
-									<a href="{{ path('admin_users_edit',{id: adress.id}) }}" class="btn btn-success">Modifier</a>
+									<a href="{{ path('admin_users_edit',{id: adress.id}) }}" class="btn-sm btn-danger">Modifier</a>
 								</td>
 							</tr>
 						{% endfor %}

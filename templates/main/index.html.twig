@@ -18,26 +18,26 @@
 				</div>
 				{% for category in categorie %}
 					<div class="col-lg-4 col-sm-7 mb-3">
-						<div class="card h-100 bg-success border-light">
+						<div class="card h-100 bg-success">
 							<img class="card-img-top" src="{{ asset('assets/uploads/categories/') ~ category.image }}" alt="Card image cap">
 							<div class="card-body">
-								<h3 class="card-title">{{ category.libelle }}</h3>
+								<h3 class="card-title text-danger">{{ category.libelle }}</h3>
 								<p class="card-text">Disponible :
 									{{ category.active }}</p>
-								<a href="{{ path('categorie_list', {id: category.id})}}" class="btn btn-secondary">Voir la catégorie</a>
+								<a href="{{ path('categorie_list', {id: category.id})}}" class="btn btn-danger">Voir la catégorie</a>
 							</div>
 						</div>
 					</div>
 				{% endfor %}
 
 				{% for plats in plat %}
-					<div class="col-lg-4 mb-3">
-						<div class="card h-100 bg-success border-light">
+					<div class="col-lg-4 mb-3 ">
+						<div class="card h-100 bg-success">
 							<img class="card-img-top" src="{{ asset('assets/uploads/plats/') ~ plats.image }}" alt="Card image cap">
-							<div class="card-body">
-								<h3 class="card-title">{{ plats.libelle }}</h3>
+							<div class="card-body ">
+								<h3 class="card-title text-danger">{{ plats.libelle }}</h3>
 								<p class="card-text">{{ plats.description }}</p>
-								<a href="{{ path('plat_details', {id: plats.id})}}" class="btn btn-secondary">Voir le plat en détail</a>
+								<a href="{{ path('plat_details', {id: plats.id})}}" class="btn btn-danger">Voir le plat en détail</a>
 							</div>
 						</div>
 					</div>

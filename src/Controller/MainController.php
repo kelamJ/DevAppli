@@ -27,11 +27,14 @@ class MainController extends AbstractController
                 'attr' => [
                     'class' => 'w-100'
                 ],
-                'label' => 'Vous chercher quelque chose ?'
+                'label' => 'Vous chercher quelque chose ?',
+                'label_attr' => [
+                    'class' => 'h4 text-white'
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn-secondary'
+                    'class' => 'btn-danger'
                 ],
                 'label' => 'Rechercher'
             ])

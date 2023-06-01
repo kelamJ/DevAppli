@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Administration des catégories{% endblock %}
+{% block title %}Administration des catégories
+{% endblock %}
 
 {% block body %}
 
-    <main class="container my-3">
-        <section class="row">
-            <div class="col-12">
-                <h1>Ajouter une catégorie</h1>
-                {% include "admin/categories/_form.html.twig" %}
-            </div>
-        </section>
-    </main>
+	<div class="d-flex justify-content-center">
+		<h1 class="text-white">Ajouter une catégorie</h1>
+	</div>
+	<main class="container d-flex justify-content-center my-3">
+		<section class="row">
+			<div class="col-12">
+				{% include "admin/categories/_form.html.twig" %}
+			</div>
+		</section>
+	</main>
 
 {% endblock %}

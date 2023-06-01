@@ -5,5 +5,6 @@
     {{ form_row(platForm.prix)}}
     {{ form_row(platForm.image)}}
     {{ form_row(platForm.active)}}
-    <button type="submit" class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
+    <button type="submit" class="btn btn-danger">{{ button_label|default('Ajouter') }}</button>
+    <a class="btn btn-danger" href="{{ path('admin_categories_index')}}"> Retour</a>
 {{ form_end(platForm)}}
