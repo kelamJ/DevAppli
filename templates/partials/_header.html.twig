@@ -1,31 +1,36 @@
 <nav class="navbar border-bottom border-light navbar-expand-lg navbar-dark bg-success h5">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="{{ path('main_index') }}"><img src="uploads/LogoDistrict" alt=""></a>
-		<div class="mx-auto" id="navbarColor01">
-			<ul class="navbar-nav">
-				<li class="nav-item">
+		<a class="navbar-brand" href="{{ path('main_index') }}"><img class="w-50 " src="{{ asset('assets/uploads/LogoDistrictDimension.png')}}" alt=""></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav justify-content-between w-100">
+				<li class="nav-item rounded border border-light">
 					<a class="nav-link active" href="{{ path('main_index') }}">Accueil</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item rounded border border-light">
 					<a class="nav-link" href="/categorie">Catégorie</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item rounded border border-light">
 					<a class="nav-link" href="/plat">Plats</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item rounded border border-light">
 					<a class="nav-link" href="{{ path('contact_index')}}">Contact</a>
 				</li>
 				<li class="nav-item fs-3">
-					<a class="nav-link" href="{{ path('cart_index') }}"><ion-icon name="cart-outline"></ion-icon></a>
+					<a class="nav-link mr-5" href="{{ path('cart_index') }}">
+						<ion-icon name="cart-outline"></ion-icon>
+					</a>
 				</li>
 			</ul>
 		</div>
 		<div class="navbar-nav d-flex flex-row-reverse">
 			{% if app.user %}
 				{% if is_granted('ROLE_PRODUCT_ADMIN') %}
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('admin_index') }}">Administration</a>
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('admin_index') }}">Administration</a>
+					</li>
 				{% endif %}
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon compte</a>

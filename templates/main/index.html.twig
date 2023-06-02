@@ -18,7 +18,7 @@
 				</div>
 				{% for category in categorie %}
 					<div class="col-lg-4 col-sm-7 mb-3">
-						<div class="card h-100 bg-success">
+						<div class="card h-100 bg-primary">
 							<img class="card-img-top" src="{{ asset('assets/uploads/categories/') ~ category.image }}" alt="Card image cap">
 							<div class="card-body">
 								<h3 class="card-title text-danger">{{ category.libelle }}</h3>
@@ -32,7 +32,7 @@
 
 				{% for plats in plat %}
 					<div class="col-lg-4 mb-3 ">
-						<div class="card h-100 bg-success">
+						<div class="card h-100 bg-primary">
 							<img class="card-img-top" src="{{ asset('assets/uploads/plats/') ~ plats.image }}" alt="Card image cap">
 							<div class="card-body ">
 								<h3 class="card-title text-danger">{{ plats.libelle }}</h3>
